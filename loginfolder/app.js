@@ -19,5 +19,5 @@ closedeye.addEventListener('click', function(){
      }
      else{
          pinput.type='password'
-     }
+     } 
  })

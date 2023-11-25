@@ -4,8 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ProjectMELE 2.0</title>
+    <link rel="stylesheet" href="./stylesFolder/formstyle.css">
 </head>
 <body>
+
+     <!-- Loader -->
+     <div class="circle-container">
+        <div class="backdrop"></div>
+        <svg fill="none" class="circle-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"></svg>
+        <div class="loadingText">loading...</div>
+    </div>
+
+    <div id="main">
+        <nav>
+            <img src="./images/mitsLogoBest-removebg-preview.png" alt="">
+            <div class="headers">
+                <h1>Madanapalle Institute of Technology & Science</h1>
+                <div class="h4div">
+                    <h4>(UGC - AUTONOMOUS INSTITUTION)</h4>
+                    <h4>www.mits.ac.in</h4>
+                </div>
+            </div>
+        </nav>
+        <select name="firstDropdown" id="firstDropdown">
+            <option value=""><a href="#">Seating</a></option>
+            <option value=""><a href="#">Result</a></option>
+            <option value=""><a href="#">Notice</a></option>
+        </select>
+        <form action="" id="firstform">
+                <div class="timingdiv">
+                    <div class="fromtimediv">
+                        <label for="fromtime">From :</label>
+                        <input type="time" id="fromtime" name="fromtime">
+                    </div>
+                    <div class="totimediv">
+                        <label for="totime">To :</label>
+                        <input type="time" id="totime" name="totime">
+                    </div>
+                </div>
+                <div class="datediv">
+                    <label for="mydate">Date :</label>
+                    <input type="date" id="mydate">
+                </div>
+                
+        </form>
+        <form action=""  id="secondform">
+            <h2>Seating Order</h2>
+            <div class="radiosection">
+                <div><label for="Continuos">Continuos</label><input type="radio" id="Continuos" name="seatingOrder"></div>
+                
+                <div><label for="jumble">Jumble</label><input type="radio" id="jumble" name="seatingOrder"></div>
+            </div>
+            <div class="manualsheetForAdmin">
+                <label for="">Download Manual Sheet for Admin :</label><button type="button" id="AdminSheetBtn">Download</button>
+            </div>
+            <div class="downloadSheetForInvizilator">
+                <label for="">Download Sheets for Invizilator :</label><button type="button" id="InvizilatorSheetsBtn">Download</button>
+            </div>
+            <div class="AttendanceSheet">
+                <label for="">Attendance Sheet :</label><button type="button" id="AttendanceSheetBtn">Download</button>
+            </div>
+            <div class="mailsendingsection">
+                <label for="">Send Mail  To All :</label><button type="button" id="sendMailBtn">Send Mails</button>
+            </div>
+        </form>
     
+    </div>
+  
+    <script src="./jsFoder/firstForm.js"></script>
+    <script src="./jsFoder//Details.js"></script>
 </body>
 </html>

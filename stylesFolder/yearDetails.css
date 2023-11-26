@@ -1,16 +1,29 @@
+/* General styles */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 
-#alldetails{
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+/* Styling for the 'alldetails' form */
+#alldetails {
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: center;
     padding: 20px 20px;
     margin: 20px auto;
-
     border-radius: 5px;
     width: 600px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
+/* Styling for the 'initial' details element */
 #initial {
     margin: 20px;
 }
@@ -36,9 +49,9 @@
     color: #333;
     width: 100%;
     margin: 10px 0;
-    border: 1px solid #ddd; /* Initial border */
-    padding: 8px; /* Add padding for better visual */
-    transition:  background-color 0.3s ease, border 0.3s ease;
+    border: 1px solid #ddd;
+    padding: 8px;
+    transition: background-color 0.3s ease, border 0.3s ease;
     cursor: pointer;
     font-weight: bold;
     text-align: center;
@@ -46,11 +59,11 @@
 
 #initial p:hover {
     color: #4caf50;
-    background-color: #f0f0f0; /* Adjust the background color as needed */
-    border: 1px solid #4caf50; /* Border on hover */
+    background-color: #f0f0f0;
+    border: 1px solid #4caf50;
 }
 
-
+/* Styling for the 'yearsSection' div */
 .yearsSection {
     display: flex;
     width: fit-content;
@@ -63,6 +76,7 @@
     display: none;
 }
 
+/* Styling for the 'firstYearMainSection' */
 .firstYearMainSection {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -84,17 +98,19 @@
     margin: 5px;
     cursor: pointer;
     border-radius: 3px;
+    font-weight: 600;
 }
 
 .subject:hover {
     background-color: #45a049;
 }
-/* display styles */
+
+/* Styling for dynamically generated display sections */
 .display1 button,
 .display2 button,
 .display3 button {
-    background-color: #3498db; /* Blue background color */
-    color: #fff; /* White text color */
+    background-color: #3498db;
+    color: #fff;
     padding: 10px;
     margin: 5px;
     cursor: pointer;
@@ -105,17 +121,7 @@
 .display1 button:hover,
 .display2 button:hover,
 .display3 button:hover {
-    background-color: #2980b9; /* Darker blue on hover */
-}
-
-.display1,
-.display2,
-.display3 {
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
-    gap: 20px; /* Adjust the gap between columns */
-    
+    background-color: #2980b9;
 }
 
 /* Additional styles for dynamically added elements */
@@ -127,7 +133,7 @@
     color: #333;
 }
 
-/* styles for button  */
+/* Styling for the 'generateDataButton' button */
 #generateDataButton {
     background-color: #5b4caf;
     color: #fff;
@@ -137,9 +143,42 @@
     cursor: pointer;
     border: none;
     border-radius: 5px;
+    font-size: 15px;
     font-weight: bold;
 }
 
 #generateDataButton:hover {
     background-color: #483c8a;
+}
+
+/* Styling for the display table data section */
+.displayyeardata h3 {
+    margin-bottom: 10px;
+    color: #3498db;
+}
+
+.displayyeardata .key-row {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+}
+
+.displayyeardata .selected-values {
+    font-weight: bold;
+    color: #000000;
+}
+
+.displayyeardata .selected-values:hover {
+    background-color: #ecf0f1;
+    transition: background-color 0.3s ease;
+}
+
+/* Styling for key and value colors */
+.displayyeardata .key {
+    color: #e74c3c; /* Red color for keys */
+}
+
+.displayyeardata .value {
+    color: #3498db; /* Blue color for values */
 }

@@ -10,6 +10,8 @@ let blocks = {
   };
   
   // Maintain a map to store selected values for each blockType
+
+
   let selectedValues = {}
   
   

@@ -64,14 +64,14 @@ fetch('https://mele-be.onrender.com/year/code')
     // Now, you can access the Years array here or call a function that uses it
    
     // Call a function that uses the Years array
-    exampleFunction();
+    detailsmain();
   })
   .catch((err) => {
     console.log('fetching error:' + err);
   });
 
 // Define a function that uses the Years array
-function exampleFunction() {
+function detailsmain() {
  
 
 

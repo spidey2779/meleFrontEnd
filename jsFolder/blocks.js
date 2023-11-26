@@ -3,13 +3,51 @@
 
 // Assume your JavaScript file is named script.js
 
-let blocks = {
-    WB: [101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121],
-    SB: [105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119],
-    EB: [109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119],
-  };
+// let blocks = {
+//     WB: [101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121],
+//     SB: [105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119],
+//     EB: [109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119],
+//   };
   
   // Maintain a map to store selected values for each blockType
+// Define blocks globally
+let blocks = {};
+
+fetch('https://mele-be.onrender.com/rooms/empty')
+  .then((res) => {
+    if (!res.ok) {
+      throw new Error('fetching error: ' + res.status);
+    }
+    return res.json();
+  })
+  .then((data) => {
+    // Assuming 'data' is an array with a single object
+    if (Array.isArray(data) && data.length > 0) {
+      // Extract the object from the array
+      const roomData = data[0];
+
+      // Extract the keys from the object (excluding '_id')
+      const roomKeys = Object.keys(roomData).filter((key) => key !== '_id');
+
+      // Create the 'blocks' object
+      roomKeys.forEach((key) => {
+        blocks[key] = roomData[key];
+      });
+
+      blocksMain()
+    } else {
+      console.log('Invalid data format.');
+    }
+  })
+  .catch((err) => {
+    console.log('error: ' + err);
+  });
+
+
+function blocksMain(){
+   
+  
+
 
 
   let selectedValues = {}
@@ -84,3 +122,4 @@ let blocks = {
     h3Element.textContent = "Selected rooms in " + blockType + ": " + selectedValues[blockType].join(", ");
   }
   
+}

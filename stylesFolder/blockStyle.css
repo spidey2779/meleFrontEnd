@@ -1,0 +1,118 @@
+
+#blockdetails {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: 20px 20px;
+    margin: 0 auto;
+    border-radius: 5px;
+    width: 600px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.blocksSection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 0px auto;
+}
+
+/* Style each dynamically generated block section */
+.wbblockdiv,
+.sbblockdiv,
+.ebblockdiv {
+    /* border: 2px solid #3498db; */
+    border-radius: 8px;
+    overflow: hidden;
+ 
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    margin-bottom: 20px;
+
+}
+
+/* styles for generated tables */
+.wbtable,
+.sbtable,
+.ebtable {
+    width: 100%;
+    height: 200px;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    display: grid;  /* Add this property to enable grid layout */
+    grid-template-rows: repeat(5, 1fr); /* Set a fixed number of rows */
+    overflow-y: scroll; /* Apply vertical scrollbar if there are more rows */
+    scrollbar-gutter: stable;
+}
+
+
+.wbtable td,
+.sbtable td,
+.ebtable td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    transition: background-color 0.3s ease; /* Add transition for a smooth effect */
+    cursor: pointer;
+}
+
+.wbtable td:hover,
+.sbtable td:hover,
+.ebtable td:hover {
+    background-color: #f0f0f0; /* Change the background color on hover */
+}
+
+.wbtable td:active,
+.sbtable td:active,
+.ebtable td:active {
+    background-color: #dbc3c3; /* Change the background color on click */
+}
+
+/* style for the buttons */
+.wbblockdiv button,
+.sbblockdiv button,
+.ebblockdiv button {
+    transform: translateX(90%);
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin: 10px 0px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.wbblockdiv button:hover,
+.sbblockdiv button:hover,
+.ebblockdiv button:hover {
+    background-color: #2980b9;
+}
+/* display table data */
+.displaytabledata {
+    margin-top: 20px;
+}
+
+.displaytabledata h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+/* Add more styles if needed for the h3 elements */
+
+/* generatebutton */
+#generateBlocks {
+    background-color: #27ae60; /* Green color, you can change it to your preferred color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#generateBlocks:hover {
+    background-color: #219d54; /* Darker green color on hover */
+}

@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ProjectMELE 2.0</title>
     <link rel="stylesheet" href="./stylesFolder/formstyle.css">
+    <link rel="stylesheet" href="./stylesFolder/yearDetails.css">
+    <link rel="stylesheet" href="./stylesFolder/blockStyle.css">
 </head>
 
 <body>
@@ -50,143 +52,35 @@
             </div>
 
         </form>
-        <main id="alldetails" class="alldetails">
-            <details>
+
+        <!-- year and department details -->
+        <form id="alldetails" class="alldetails">
+            <details id="initial">
                 <summary id="year">Select Year</summary>
-                <p id="fir">1st year</p>
-                <p id="sec">2nd Year</p>
-                <p id="thi">3rd Year</p>
+    
             </details>
-            <section id="firstyear" class="branches">
-                <div id="cse" class="subjects">
-                    <button class="subject" type="button">1CSE</button>
-
-                </div>
-                <div id="ece" class="subjects">
-                    <button class="subject" type="button">1ECE</button>
-
-                </div>
-                <div id="eee" class="subjects">
-                    <button class="subject" type="button">1EEE</button>
-
-                </div>
-            </section>
-            <div class="display1">
-                <h3 id="c1"></h3>
-                <h3 id="ec1"></h3>
-                <h3 id="e1"></h3>
+            <div class="yearsSection">
+                <!-- Year sections will be added dynamically here -->
             </div>
-            <section id="secondyear" class="branches">
-                <div id="cse2" class="subjects">
-                    <button class="subject" type="button">2CSE</button>
+            <button id="generateDataButton" type="button">Confirm Deparments</button>
+        </form>
 
-                </div>
-                <div id="ece2" class="subjects">
-                    <button class="subject" type="button">2ECE</button>
-
-                </div>
-                <div id="eee2" class="subjects" type="button">
-                    <button class="subject">2EEE</button>
-
-                </div>
-            </section>
-            <div class="display1">
-                <h3 id="c2"></h3>
-                <h3 id="ec2"></h3>
-                <h3 id="e2"></h3>
-            </div>
-            <section id="thirdyear" class="branches">
-                <div id="cse3" class="subjects">
-                    <button class="subject" type="button">3CSE</button>
-
-                </div>
-                <div id="ece3" class="subjects">
-                    <button class="subject" type="button">3ECE</button>
-
-                </div>
-                <div id="eee3" class="subjects">
-                    <button class="subject" type="button">3EEE</button>
-
-                </div>
-            </section>
-            <div class="display1">
-                <h3 id="c3"></h3>
-                <h3 id="ec3"></h3>
-                <h3 id="e3"></h3>
-            </div>
-            <button id="firstokay">Ok</button>
+        <form action="" class="blockdetails" id="blockdetails">
             <!-- blocks -->
-            <section class="blocksSection">
-                <div class="table1">
-                    <button id="west" type="button">West</button>
-                    <table border="1" id="t1">
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>8</td>
-                            <td>9</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="table2">
-                    <button id="east" type="button">East</button>
-                    <table border="1" id="t2">
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>8</td>
-                            <td>9</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="table3">
-                    <button id="south" type="button">South</button>
-                    <table border="1" id="t3">
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>8</td>
-                            <td>9</td>
-                        </tr>
-                    </table>
-
-                </div>
+            <section class="blocksSection" id="blockSection">
+               
+                
             </section>
             <div class="displaytabledata">
                 <h3 id="wblock"></h3>
                 <h3 id="Eblock"></h3>
                 <h3 id="Sblock"></h3>
             </div>
-            <button id="secondokay" type="button">ok</button>
-        </main>
+            <button id="generateBlocks" type="button">Confirm Rooms</button>
+    
+        </form>
+
+
         <form action="" id="secondform">
             <h2>Seating Order</h2>
             <div class="radiosection">
@@ -217,6 +111,7 @@
     <script src="./jsFolder/main.js" type="module" defer></script>
     <script src="./jsFolder/firstForm.js"></script>
     <script src="./jsFolder/Details.js"></script>
+    <script src="./jsFolder/blocks.js"></script>
 </body>
 
 </html>

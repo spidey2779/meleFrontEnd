@@ -20,7 +20,7 @@ html,body{
 }
 
 .backdrop {
-    position: absolute;
+    position: fixed;
     height: 160%;
     width: 100%;
     background-color: black;
@@ -28,6 +28,7 @@ html,body{
 }
 
 .circle-svg {
+    position: fixed;
     background-color: cyan;
     padding: 10px;
     border-top: 10px solid black;
@@ -41,7 +42,7 @@ html,body{
 
 .loadingText{
    
-    position: absolute;
+    position: fixed;
     font-weight: bold;
 }
 @keyframes rotate {

@@ -12,7 +12,8 @@ html, body {
 
 /* Styling for the 'alldetails' form */
 #alldetails {
-    display: flex;
+    /* display: flex; */
+    display: none;
     flex-direction: column;
     align-items: start;
     justify-content: center;

@@ -2,11 +2,7 @@
 
 
 // this is the output array
-let myoutput=[
-  {},
-  {},
-  {},
-]
+let myFinalOutput=[]
 
 // this is input years after upadate this with the database array
 // let Years = [
@@ -30,8 +26,9 @@ let myoutput=[
 
 
 // Initialize Years as an empty array
-// Initialize Years as an empty array
+
 let Years = [];
+let selectedDataBeforeDeletion = null;
 
 fetch('https://mele-be.onrender.com/year/code')
   .then((response) => {
@@ -256,9 +253,75 @@ function updateDisplay() {
 
 //  confirming the  department details
 
+
+
+
+// Modify the handleValueButtonClick function
+function handleValueButtonClick(yearIndex, key, value) {
+    // Check if there is an array for the key in the selectedData object
+    if (!selectedData[key]) {
+        // If not, create a new array for the key
+        selectedData[key] = [];
+    }
+
+    // Replace the existing value or add the new value to the array
+    selectedData[key] = [value];
+
+    // Update the display
+    updateDisplay();
+}
+
+// Function to confirm with the user before deleting
+function confirmDeletion() {
+    // Confirm with the user before performing any operation
+    const confirmed = confirm(`Are you sure you want to proceed with the selected data? This action cannot be undone.`);
+    if (!confirmed) {
+        // If the user cancels, reset the button status
+        depdetailsBtnClicked = false;
+        return false;
+    }
+
+    // Store the selected data before deletion
+    selectedDataBeforeDeletion = { ...selectedData };
+    mydatafunction(selectedDataBeforeDeletion)
+    // console.log(selectedDataBeforeDeletion)
+    // Disable pointer events for the details tag after confirming
+    const det = document.getElementById('alldetails');
+    if (det) {
+        det.style.pointerEvents = 'none';
+    }
+
+    return true;
+}
+
+//  confirming the  department details
+let depdetailsBtnClicked = false;
 let depdetailsBtn = document.getElementById('generateDataButton');
 
 depdetailsBtn.addEventListener('click', function (e) {
+    if (depdetailsBtnClicked) {
+        return;
+    }
+
+    // Check if at least one subject is selected
+    if (Object.keys(selectedData).length === 0) {
+        // Display alert if no subject is selected
+        alert('Please select at least one subject.');
+        return;
+    }
+
+    depdetailsBtnClicked = true;
+
+    // Confirm with the user before performing any operation
+    if (!confirmDeletion()) {
+        // If the user cancels, reset the button status
+        depdetailsBtnClicked = false;
+        return;
+    }
+
+    // Show loader when the button is clicked
+    startLoader("updating details...");
+
     // Iterate over the selected years and hide their sections
     selectedYears.forEach(yearIndex => {
         const selectedSection = document.getElementById(`year${yearIndex}`);
@@ -273,19 +336,45 @@ depdetailsBtn.addEventListener('click', function (e) {
 
     // Clear the selected data
     for (const key in selectedData) {
+       
+        // For now, we'll just delete the selected data
         delete selectedData[key];
     }
 
     // Update the display
     updateDisplay();
-    
-    
-    startLoader()
+
+    // Collapse the <details> element with ID "initial"
+    const detailsElement = document.getElementById('initial');
+    if (detailsElement) {
+        detailsElement.removeAttribute('open');
+    }
+
+    // Disable the button after confirming
+    depdetailsBtn.disabled = true;
+
+    // Disable the summary tag after confirming
+    const summaryTag = document.getElementById('year');
+    if (summaryTag) {
+        summaryTag.disabled = true;
+    }
+    document.getElementById('blockdetails').style.display="flex"
+    // Example asynchronous operation (replace this with your actual logic)
     setTimeout(() => {
       stopLoader();
-    }, 3000);
-
+        
+        // Reset depdetailsBtnClicked after completing the operation
+        depdetailsBtnClicked = false;
+    }, 2000); 
 });
 
 
+
+
+
+
+
+
+
 }
+

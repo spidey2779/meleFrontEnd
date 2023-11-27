@@ -72,6 +72,7 @@ html,body{
 nav{
     height: 90px;
     width: 100%;
+    min-width: 600px;
     /* background-color: crimson; */
     background-color: rgb(55, 104, 253);
     display: flex;
@@ -218,9 +219,49 @@ nav .headers h1{
     border-color: #000000;
 }
 
+#firstform > h2{
+    font-size: 20px;
+    font-family: sans-serif;
+    /* margin: 0px auto; */
+}
 
+.radiosection{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2em;
+    margin-top: 10px;
+}
+.radiosection label{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.radiosection div{
+    display: flex;
+    gap: 10px;
+}
 
-  
+#firstformBtn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #3498db;
+    color: #ffffff;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 20px auto;
+}
+
+#firstformBtn:hover {
+    background-color: #ffffff;
+    color: #3498db;
+}
+
  
 /* form two */
 #secondform{
@@ -238,28 +279,7 @@ nav .headers h1{
     
 }
 
-#secondform > h2{
-    font-size: auto;
-    font-family: sans-serif;
-    margin: 0px auto;
-}
 
-.radiosection{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2em;
-    padding: 5px;
-    margin: 0px auto;
-}
-.radiosection label{
-    font-size: 1.2em;
-    font-weight: bold;
-}
-.radiosection div{
-    display: flex;
-    gap: 10px;
-}
 
 /* buttonsection */
 .manualsheetForAdmin,.downloadSheetForInvizilator,.AttendanceSheet,.mailsendingsection{

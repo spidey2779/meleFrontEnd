@@ -1,6 +1,6 @@
 
 #blockdetails {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: start;
     justify-content: center;

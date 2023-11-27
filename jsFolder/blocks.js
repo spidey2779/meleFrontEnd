@@ -11,7 +11,8 @@
   
   // Maintain a map to store selected values for each blockType
 // Define blocks globally
-let blocks = {};
+let  blocks = {};
+let  selectedRooms={}
 
 fetch('https://mele-be.onrender.com/rooms/empty')
   .then((res) => {
@@ -34,7 +35,7 @@ fetch('https://mele-be.onrender.com/rooms/empty')
         blocks[key] = roomData[key];
       });
 
-      blocksMain()
+      blocksMain(blocks)
     } else {
       console.log('Invalid data format.');
     }
@@ -44,16 +45,10 @@ fetch('https://mele-be.onrender.com/rooms/empty')
   });
 
 
-function blocksMain(){
+function blocksMain(blocks){
    
-  
+  let selectedValues = {};
 
-
-
-  let selectedValues = {}
-  
-  
-  
   for (let key in blocks) {
     generateTableAndH3(key, blocks[key]);
   }
@@ -124,8 +119,6 @@ function blocksMain(){
 }
 
 
-
-  
 function updateDisplayTableData(blockType) {
   // Get the corresponding h3 element based on blockType
   var h3Element = document.getElementById(blockType.toLowerCase() + "block");
@@ -145,5 +138,91 @@ function updateDisplayTableData(blockType) {
 }
 
 
+
+
+const confirmButton = document.getElementById('generateBlocks');
+
+// Attach a click event listener to the confirm button
+confirmButton.addEventListener('click', handleConfirmButtonClick);
+
+function handleConfirmButtonClick() {
+    // Check if at least one room is selected
+    const totalSelectedRooms = Object.values(selectedValues).flat().length;
+
+    if (totalSelectedRooms === 0) {
+        // Display an alert if no room is selected
+        alert('Please select at least one room.');
+        return;
+    }
+    // Display a confirmation message to the user
+    const userConfirmation = confirm('Are you sure you want to confirm you cannot make any changes ?');
+
+    // Check if the user confirmed
+    if (!userConfirmation) {
+        // If the user didn't confirm, return
+        return;
+    }
+
+    // You can replace the above log with your actual pre-confirmation operation
+
+    // Set pointer-events to 'none' for blockSection
+    const blockSection = document.getElementById('blockSection');
+    if (blockSection) {
+        blockSection.style.pointerEvents = 'none';
+    }
+
+   
+
+ 
+
+    // Iterate over the selectedValues object and store the selected rooms
+    for (const blockType in selectedValues) {
+        selectedRooms[blockType] = selectedValues[blockType].map(Number);
+
+        // Remove the respective h3 element
+        const h3Element = document.getElementById(blockType.toLowerCase() + 'block');
+        if (h3Element) {
+            h3Element.remove();
+        }
+    }
+
+    // Console log the selected rooms object
+    // console.log(selectedRooms);
+    
+    mydatafunction2(selectedRooms)
+    hello()
+    // Example asynchronous operation (replace this with your actual logic)
+    confirmButton.disabled=true;
+    setTimeout(() => {
+        // After completing the operation, stop the loader
+
+   
+        stopLoader();
+    }, 2000); // Adjust the time according to your actual logic or remove the timeout if not needed
+}
+
+
+
+
+
+
+
+}
+
+function mydatafunction2(selectedRooms) {
+ 
   
+}
+
+function mydatafunction(selectedDataBeforeDeletion) {
+ 
+  
+}
+
+function hello(){
+ 
+  myFinalOutput.push(selectedRooms);
+  myFinalOutput.push(selectedDataBeforeDeletion);
+  myFinalOutput.push(mytimingDetails);
+console.log(myFinalOutput)
 }

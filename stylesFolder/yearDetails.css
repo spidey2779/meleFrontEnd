@@ -162,6 +162,11 @@ html, body {
     padding: 10px;
     background-color: #f4f4f4;
     border-radius: 8px;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 5px;
+    justify-content: space-between;
 }
 
 .displayyeardata .selected-values {
@@ -173,6 +178,38 @@ html, body {
     background-color: #ecf0f1;
     transition: background-color 0.3s ease;
 }
+/* Add styles for the delete button */
+.delete-button {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    margin-right: 5px;
+    font-weight: 900;
+    line-height: 20px; /* Adjust this value to vertically center the 'x' */
+  }
+  
+  /* Add hover effect for the delete button */
+  .delete-button:hover {
+    background-color: darkred;
+  }
+  
+  /* Add some spacing between delete button and selected values */
+  .selected-values {
+    display: inline-block;
+    margin-left: 5px;
+  }
+  
+  /* Add styles for the key-row */
+  .key-row {
+    margin-bottom: 10px;
+  }
+  
+
 
 /* Styling for key and value colors */
 .displayyeardata .key {

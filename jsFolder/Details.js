@@ -35,12 +35,15 @@ let Years = [];
 
 fetch('https://mele-be.onrender.com/year/code')
   .then((response) => {
+    startLoader('Fetching Data ...')
     if (!response.ok) {
       throw new Error("Error in fetching..." + response.status);
     }
     return response.json();
   })
   .then((data) => {
+    // stop the loader
+    stopLoader()
     // Assuming 'data' is an array of department objects
 
     // Iterate over each department object
@@ -188,48 +191,68 @@ function updateDisplay() {
 
   // Iterate over the selected values and organize them by ending number
   for (const key in selectedData) {
-      const endingNumber = key.slice(-1);
+    const endingNumber = key.slice(-1);
 
-      if (!valuesByEndingNumber[endingNumber]) {
-          valuesByEndingNumber[endingNumber] = [];
-      }
+    if (!valuesByEndingNumber[endingNumber]) {
+      valuesByEndingNumber[endingNumber] = [];
+    }
 
-      valuesByEndingNumber[endingNumber].push({ key, value: selectedData[key][0] });
+    valuesByEndingNumber[endingNumber].push({ key, value: selectedData[key][0] });
   }
 
   // Iterate over the organized values and create rows
   for (const endingNumber in valuesByEndingNumber) {
-      // Create a heading for each set of values
-      const heading = document.createElement('h3');
-      heading.textContent = `Year${endingNumber}`;
-      heading.classList.add('heading');
-      displayDiv.appendChild(heading);
+    // Create a heading for each set of values
+    const heading = document.createElement('h3');
+    heading.textContent = `Year${endingNumber}`;
+    heading.classList.add('heading');
+    displayDiv.appendChild(heading);
 
-      // Iterate over the values for the current ending number and create rows
-      valuesByEndingNumber[endingNumber].forEach(({ key, value }) => {
-          // Create a row div for each key
-          const keyRowDiv = document.createElement('div');
-          keyRowDiv.classList.add('key-row');
-          keyRowDiv.setAttribute('data-key', key);
+    // Iterate over the values for the current ending number and create rows
+    valuesByEndingNumber[endingNumber].forEach(({ key, value }) => {
+      // Create a row div for each key
+      const keyRowDiv = document.createElement('div');
+      keyRowDiv.classList.add('key-row');
+      keyRowDiv.setAttribute('data-key', key);
 
-          // Create a div to display the values for the key, including the key itself
-          const selectedValuesDiv = document.createElement('div');
-          selectedValuesDiv.classList.add('selected-values');
+      // Create a span with a round shape and an X mark
+      const deleteButton = document.createElement('span');
+      deleteButton.classList.add('delete-button');
+      deleteButton.textContent = '✖';
 
-          // Append the key to the div
-          selectedValuesDiv.textContent += key + ': ';
+      // Add a click event listener to remove the key-row element and heading if needed
+      deleteButton.addEventListener('click', () => {
+        keyRowDiv.remove();
 
-          // Append the single value to the div
-          selectedValuesDiv.textContent += value;
+        // Check if there are no more subjects for the current year, then remove the heading
+        if (displayDiv.querySelectorAll(`.key-row[data-key$="${endingNumber}"]`).length === 0) {
+          heading.remove();
+        }
 
-          // Append the values div to the row div
-          keyRowDiv.appendChild(selectedValuesDiv);
-
-          // Append the row div to the display
-          displayDiv.appendChild(keyRowDiv);
+        // Remove the deleted subject from selectedData
+        delete selectedData[key];
       });
+
+      // Create a div to display the values for the key, including the key itself
+      const selectedValuesDiv = document.createElement('div');
+      selectedValuesDiv.classList.add('selected-values');
+
+      // Append the key to the div
+      selectedValuesDiv.textContent += key + ': ';
+
+      // Append the single value to the div
+      selectedValuesDiv.textContent += value;
+
+      // Append the delete button and values div to the row div
+      keyRowDiv.appendChild(deleteButton);
+      keyRowDiv.appendChild(selectedValuesDiv);
+
+      // Append the row div to the display
+      displayDiv.appendChild(keyRowDiv);
+    });
   }
 }
+
 
 //  confirming the  department details
 

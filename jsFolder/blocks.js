@@ -60,66 +60,90 @@ function blocksMain(){
   
   function generateTableAndH3(blockType, values) {
     var blockContainer = document.getElementById("blockSection");
-  
+
     var tableContainer = document.createElement("div");
     var tableClass = blockType.toLowerCase() + "table";
     var divClass = blockType.toLowerCase() + "blockdiv";
     tableContainer.className = divClass;
-  
+
     var button = document.createElement("button");
     button.type = "button";
     button.textContent = blockType;
-  
+
     var table = document.createElement("table");
     table.classList.add(tableClass);
-  
+
     var numColumns = 3; // Assuming you want 3 columns
     var numRows = Math.ceil(values.length / numColumns);
-  
+
     for (var i = 0; i < numRows; i++) {
         var row = table.insertRow(i);
-  
+
         for (var j = 0; j < numColumns; j++) {
             var index = i * numColumns + j;
             if (index < values.length) {
                 var cell = row.insertCell(j);
                 cell.textContent = values[index];
-  
+
                 // Attach a click event to each cell
                 cell.addEventListener("click", function (event) {
                     var clickedCell = event.target;
                     var selectedValue = clickedCell.textContent;
-  
+
                     // Check if selectedValues[blockType] exists, if not create an array
                     selectedValues[blockType] = selectedValues[blockType] || [];
-  
-                    // Check if the value is not already in the array before adding it
-                    if (!selectedValues[blockType].includes(selectedValue)) {
+
+                    // Toggle background color and update selected values
+                    if (selectedValues[blockType].includes(selectedValue)) {
+                        // Remove from selected values and revert background color
+                        selectedValues[blockType] = selectedValues[blockType].filter(value => value !== selectedValue);
+                        clickedCell.style.backgroundColor = "";
+                    } else {
+                        // Add to selected values and change background color
                         selectedValues[blockType].push(selectedValue);
+                        clickedCell.style.backgroundColor = "lightblue";
                     }
-  
+
                     updateDisplayTableData(blockType);
                 });
             }
         }
     }
-  
+
     tableContainer.appendChild(button);
     tableContainer.appendChild(table);
     blockContainer.appendChild(tableContainer);
-  
+
     // Dynamically create and append an h3 element for each blockType
     var h3Element = document.createElement("h3");
     h3Element.id = blockType.toLowerCase() + "block";
     document.querySelector(".displaytabledata").appendChild(h3Element);
-  }
+
+    // Initially hide the h3 element
+    h3Element.style.display = "none";
+}
+
+
+
   
-  function updateDisplayTableData(blockType) {
-    // Get the corresponding h3 element based on blockType
-    var h3Element = document.getElementById(blockType.toLowerCase() + "block");
-  
-    // Update the content of the h3 element
-    h3Element.textContent = "Selected rooms in " + blockType + ": " + selectedValues[blockType].join(", ");
+function updateDisplayTableData(blockType) {
+  // Get the corresponding h3 element based on blockType
+  var h3Element = document.getElementById(blockType.toLowerCase() + "block");
+
+  // Check if there are selected room numbers
+  if (selectedValues[blockType] && selectedValues[blockType].length > 0) {
+      // Update the content of the h3 element
+      h3Element.textContent = "Selected rooms in " + blockType + ": " + selectedValues[blockType].join(", ");
+      // Optionally, you can add styling to the h3 element
+    
+      // Show the h3 element
+      h3Element.style.display = "block";
+  } else {
+      // If no room numbers are selected, hide the h3 element
+      h3Element.style.display = "none";
   }
+}
+
+
   
 }

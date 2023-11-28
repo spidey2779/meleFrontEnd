@@ -26,6 +26,7 @@ let myFinalOutput=[]
 
 
 // Initialize Years as an empty array
+// let radiovalue='continuous'
 
 let Years = [];
 let selectedDataBeforeDeletion = null;
@@ -173,81 +174,98 @@ function handleValueButtonClick(yearIndex, key, value) {
 
     // Update the display
     updateDisplay();
-}
 
+    // Check if there are no selected subjects for the current year
+    const displayDiv = document.querySelector(`#year${yearIndex} > .display${yearIndex}`);
+    const selectedSubjects = displayDiv.querySelectorAll('.selected-values');
+
+    if (selectedSubjects.length === 0) {
+        // If no subjects are selected, hide the year section
+        const selectedSection = document.getElementById(`year${yearIndex}`);
+        selectedSection.style.display = 'none';
+        selectedYears.delete(yearIndex);
+    }
+}
 
 // Function to update the display with the selected values
 function updateDisplay() {
-  const displayDiv = document.querySelector('.displayyeardata');
+    const displayDiv = document.querySelector('.displayyeardata');
 
-  // Clear the display
-  displayDiv.innerHTML = '';
+    // Clear the display
+    displayDiv.innerHTML = '';
 
-  // Create an object to store values based on the ending number in the key
-  const valuesByEndingNumber = {};
+    // Create an object to store values based on the ending number in the key
+    const valuesByEndingNumber = {};
 
-  // Iterate over the selected values and organize them by ending number
-  for (const key in selectedData) {
-    const endingNumber = key.slice(-1);
+    // Iterate over the selected values and organize them by ending number
+    for (const key in selectedData) {
+        const endingNumber = key.slice(-1);
 
-    if (!valuesByEndingNumber[endingNumber]) {
-      valuesByEndingNumber[endingNumber] = [];
-    }
-
-    valuesByEndingNumber[endingNumber].push({ key, value: selectedData[key][0] });
-  }
-
-  // Iterate over the organized values and create rows
-  for (const endingNumber in valuesByEndingNumber) {
-    // Create a heading for each set of values
-    const heading = document.createElement('h3');
-    heading.textContent = `Year${endingNumber}`;
-    heading.classList.add('heading');
-    displayDiv.appendChild(heading);
-
-    // Iterate over the values for the current ending number and create rows
-    valuesByEndingNumber[endingNumber].forEach(({ key, value }) => {
-      // Create a row div for each key
-      const keyRowDiv = document.createElement('div');
-      keyRowDiv.classList.add('key-row');
-      keyRowDiv.setAttribute('data-key', key);
-
-      // Create a span with a round shape and an X mark
-      const deleteButton = document.createElement('span');
-      deleteButton.classList.add('delete-button');
-      deleteButton.textContent = '✖';
-
-      // Add a click event listener to remove the key-row element and heading if needed
-      deleteButton.addEventListener('click', () => {
-        keyRowDiv.remove();
-
-        // Check if there are no more subjects for the current year, then remove the heading
-        if (displayDiv.querySelectorAll(`.key-row[data-key$="${endingNumber}"]`).length === 0) {
-          heading.remove();
+        if (!valuesByEndingNumber[endingNumber]) {
+            valuesByEndingNumber[endingNumber] = [];
         }
 
-        // Remove the deleted subject from selectedData
-        delete selectedData[key];
-      });
+        valuesByEndingNumber[endingNumber].push({ key, value: selectedData[key][0] });
+    }
 
-      // Create a div to display the values for the key, including the key itself
-      const selectedValuesDiv = document.createElement('div');
-      selectedValuesDiv.classList.add('selected-values');
+    // Iterate over the organized values and create rows
+    for (const endingNumber in valuesByEndingNumber) {
+        // Create a heading for each set of values
+        const heading = document.createElement('h3');
+        heading.textContent = `Year${endingNumber}`;
+        heading.classList.add('heading');
+        displayDiv.appendChild(heading);
 
-      // Append the key to the div
-      selectedValuesDiv.textContent += key + ': ';
+        // Iterate over the values for the current ending number and create rows
+        valuesByEndingNumber[endingNumber].forEach(({ key, value }) => {
+            // Create a row div for each key
+            const keyRowDiv = document.createElement('div');
+            keyRowDiv.classList.add('key-row');
+            keyRowDiv.setAttribute('data-key', key);
 
-      // Append the single value to the div
-      selectedValuesDiv.textContent += value;
+            // Create a span with a round shape and an X mark
+            const deleteButton = document.createElement('span');
+            deleteButton.classList.add('delete-button');
+            deleteButton.textContent = '✖';
 
-      // Append the delete button and values div to the row div
-      keyRowDiv.appendChild(deleteButton);
-      keyRowDiv.appendChild(selectedValuesDiv);
+            // Add a click event listener to remove the key-row element and heading if needed
+            deleteButton.addEventListener('click', () => {
+                keyRowDiv.remove();
 
-      // Append the row div to the display
-      displayDiv.appendChild(keyRowDiv);
-    });
-  }
+                // Check if there are no more subjects for the current year, then remove the heading
+                if (displayDiv.querySelectorAll(`.key-row[data-key$="${endingNumber}"]`).length === 0) {
+                    heading.remove();
+                    // Hide the respective year section if there are no subjects
+                    const yearIndex = parseInt(endingNumber);
+                    const selectedSection = document.getElementById(`year${yearIndex}`);
+                    if (selectedSection) {
+                        selectedSection.style.display = 'none';
+                        selectedYears.delete(yearIndex);
+                    }
+                }
+
+                // Remove the deleted subject from selectedData
+                delete selectedData[key];
+            });
+
+            // Create a div to display the values for the key, including the key itself
+            const selectedValuesDiv = document.createElement('div');
+            selectedValuesDiv.classList.add('selected-values');
+
+            // Append the key to the div
+            selectedValuesDiv.textContent += key + ': ';
+
+            // Append the single value to the div
+            selectedValuesDiv.textContent += value;
+
+            // Append the delete button and values div to the row div
+            keyRowDiv.appendChild(deleteButton);
+            keyRowDiv.appendChild(selectedValuesDiv);
+
+            // Append the row div to the display
+            displayDiv.appendChild(keyRowDiv);
+        });
+    }
 }
 
 
@@ -272,8 +290,21 @@ function handleValueButtonClick(yearIndex, key, value) {
 }
 
 // Function to confirm with the user before deleting
+// ... (existing code)
+
+// Function to confirm with the user before deleting
 function confirmDeletion() {
     // Confirm with the user before performing any operation
+    const selectedYearsCount = selectedYears.size;
+
+    if (radiovalue === 'continuous' && selectedYearsCount > 2) {
+        alert('Please select only two years for continuous mode.');
+        return false;
+    } else if (radiovalue === 'jumble' && selectedYearsCount > 1) {
+        alert('Please select only one year for jumble mode.');
+        return false;
+    }
+
     const confirmed = confirm(`Are you sure you want to proceed with the selected data? This action cannot be undone.`);
     if (!confirmed) {
         // If the user cancels, reset the button status
@@ -283,8 +314,8 @@ function confirmDeletion() {
 
     // Store the selected data before deletion
     selectedDataBeforeDeletion = { ...selectedData };
-    mydatafunction(selectedDataBeforeDeletion)
-    // console.log(selectedDataBeforeDeletion)
+    mydatafunction(selectedDataBeforeDeletion);
+
     // Disable pointer events for the details tag after confirming
     const det = document.getElementById('alldetails');
     if (det) {
@@ -293,6 +324,9 @@ function confirmDeletion() {
 
     return true;
 }
+
+// ... (remaining code)
+
 
 //  confirming the  department details
 let depdetailsBtnClicked = false;
@@ -362,7 +396,7 @@ depdetailsBtn.addEventListener('click', function (e) {
     // Example asynchronous operation (replace this with your actual logic)
     setTimeout(() => {
       stopLoader();
-        
+    depdetailsBtn.innerText = "⬇️Select the Rooms below"
         // Reset depdetailsBtnClicked after completing the operation
         depdetailsBtnClicked = false;
     }, 2000); 

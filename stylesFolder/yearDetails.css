@@ -109,7 +109,9 @@ html, body {
 /* Styling for dynamically generated display sections */
 .display1 button,
 .display2 button,
-.display3 button {
+.display3 button,
+.display4 button
+{
     background-color: #3498db;
     color: #fff;
     padding: 10px;
@@ -121,7 +123,9 @@ html, body {
 
 .display1 button:hover,
 .display2 button:hover,
-.display3 button:hover {
+.display3 button:hover,
+.display4 button:hover
+{
     background-color: #2980b9;
 }
 

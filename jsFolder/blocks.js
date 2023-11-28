@@ -16,6 +16,7 @@ let  selectedRooms={}
 
 fetch('https://mele-be.onrender.com/rooms/empty')
   .then((res) => {
+   
     if (!res.ok) {
       throw new Error('fetching error: ' + res.status);
     }
@@ -191,13 +192,14 @@ function handleConfirmButtonClick() {
     
     mydatafunction2(selectedRooms)
     hello()
+    // startLoader('sending selected rooms...')
     // Example asynchronous operation (replace this with your actual logic)
     confirmButton.disabled=true;
     setTimeout(() => {
         // After completing the operation, stop the loader
 
-   
-        stopLoader();
+      
+        // stopLoader();
     }, 2000); // Adjust the time according to your actual logic or remove the timeout if not needed
 }
 
@@ -219,10 +221,36 @@ function mydatafunction(selectedDataBeforeDeletion) {
   
 }
 
-function hello(){
- 
+function hello() {
   myFinalOutput.push(selectedRooms);
   myFinalOutput.push(selectedDataBeforeDeletion);
   myFinalOutput.push(mytimingDetails);
-console.log(myFinalOutput)
+
+  console.log(myFinalOutput);
+
+  // Assuming myFinalOutput is ready to be sent
+  const url = 'https://mele-be.onrender.com/roll/allocRoom';
+
+  fetch(url, {
+    method: 'POST', // or 'PUT' or 'PATCH' depending on your API
+    headers: {
+      'Content-Type': 'application/json',
+      // Include any additional headers if needed
+    },
+    body: JSON.stringify(myFinalOutput),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Error in fetching...' + response.status);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // Handle the response from the server if needed
+      console.log('Data sent successfully:', data);
+    })
+    .catch((error) => {
+      console.error('Error sending data:', error);
+    });
 }
+

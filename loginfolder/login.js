@@ -54,7 +54,7 @@ document.getElementById("lgnbtn").addEventListener("click", async function (e) {
     const password = document.getElementById("passwordinput").value;
   
     if (username.trim() !== '' && password.trim() !== '') {
-        startLoader();
+        startLoader("logginn in...");
         const credentials = {
             username: username,
             password: password,

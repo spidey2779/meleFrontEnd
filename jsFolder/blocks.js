@@ -246,6 +246,8 @@ function hello() {
       return response.json();
     })
     .then((data) => {
+      document.getElementById('secondform').style.pointerEvents = 'auto';
+      triggersheets(data)
       // Handle the response from the server if needed
       console.log('Data sent successfully:', data);
     })

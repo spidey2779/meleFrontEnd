@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="./login.css">
+    <link rel="stylesheet" href="./loginfolder/login.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 </head>
 <body>  
+    <!-- Loader -->
+    <div class="circle-container">
+        <div class="backdrop"></div>
+        <svg fill="none" class="circle-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"></svg>
+        <div class="loadingText" id="loadingText">loading...</div>
+    </div>
     <div class="wrapper">
         <form id="loginForm">
             <h1>Login</h1>
@@ -23,10 +28,11 @@
                 <i class="ri-eye-off-fill inactive " id="closedeye"></i>
             </div>
             
-            <button type="submit" class="btn">Login</button>
+            <button type="submit" class="lgnbtn" id="lgnbtn">Login</button>
             
         </form>
     </div>
-    <script src="./app.js"></script>
+    
+    <script src="./loginfolder/login.js"></script>
 </body>
 </html>

@@ -77,7 +77,7 @@ document.getElementById("lgnbtn").addEventListener("click", async function (e) {
         
             
   
-         
+            stopLoader()
             Swal.fire({
                 text: 'Logged in Successfully',
                 icon:  'success',

@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="./stylesFolder/formstyle.css">
     <link rel="stylesheet" href="./stylesFolder/yearDetails.css">
     <link rel="stylesheet" href="./stylesFolder/blockStyle.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+        integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -36,35 +38,35 @@
                 </div>
             </div>
         </nav>
-       <div class="afternavdiv" id="afternavdiv">
-        <select name="firstDropdown" id="firstDropdown">
-            <option value=""><a href="#">Seating</a></option>
-            <option value=""><a href="#">Result</a></option>
-            <option value=""><a href="#">Notice</a></option>
-        </select>
-        <form action="" id="resetform">
-            <button type="submit" id="resetBtn">Reset Settings</button>
-        </form>
-    
-       </div>
+        <div class="afternavdiv" id="afternavdiv">
+            <select name="firstDropdown" id="firstDropdown">
+                <option value=""><a href="#">Seating</a></option>
+                <option value=""><a href="#">Result</a></option>
+                <option value=""><a href="#">Notice</a></option>
+            </select>
+            <form action="" id="resetform">
+                <button type="submit" id="resetBtn">Reset Settings</button>
+            </form>
+
+        </div>
         <form action="" id="firstform">
             <div class="timingdiv">
                 <div class="fromtimediv">
                     <label for="fromtime">From :</label>
-                    <input type="time" id="fromtime" name="fromtime" >
+                    <input type="time" id="fromtime" name="fromtime">
                 </div>
                 <div class="totimediv">
                     <label for="totime">To :</label>
-                    <input type="time" id="totime" name="totime" >
+                    <input type="time" id="totime" name="totime">
                 </div>
             </div>
             <div class="datediv">
                 <label for="mydate">Date :</label>
-                <input type="date" id="mydate" >
+                <input type="date" id="mydate">
             </div>
             <h2>Seating Order</h2>
             <div class="radiosection">
-                <div><label for="Continuos">Continuos</label><input type="radio" id="Continuos" name="seatingOrder" >
+                <div><label for="Continuos">Continuos</label><input type="radio" id="Continuos" name="seatingOrder">
                 </div>
 
                 <div><label for="jumble">Jumble</label><input type="radio" id="jumble" name="seatingOrder"></div>
@@ -77,7 +79,7 @@
         <form id="alldetails" class="alldetails">
             <details id="initial">
                 <summary id="year">Select Year</summary>
-    
+
             </details>
             <div class="yearsSection">
                 <!-- Year sections will be added dynamically here -->
@@ -89,8 +91,8 @@
         <form action="" class="blockdetails" id="blockdetails">
             <!-- blocks -->
             <section class="blocksSection" id="blockSection">
-               
-                
+
+
             </section>
             <div class="displaytabledata">
                 <h3 id="wblock"></h3>
@@ -98,12 +100,12 @@
                 <h3 id="Sblock"></h3>
             </div>
             <button id="generateBlocks" type="button">Confirm Rooms</button>
-    
+
         </form>
 
 
         <form action="" id="secondform">
-            
+
             <div class="manualsheetForAdmin">
                 <div class="label">Download Manual Sheet for Admin :</div><button type="button"
                     id="AdminSheetBtn">Download</button>
@@ -123,9 +125,9 @@
 
     </div>
 
-    <script src="./jsFolder/main.js" ></script>
-    <script src="./jsFolder/details.js" ></script>
-    <script src="./jsFolder/blocks.js" ></script>
+    <script src="./jsFolder/main.js"></script>
+    <script src="./jsFolder/details.js"></script>
+    <script src="./jsFolder/blocks.js"></script>
     <script src="./jsFolder/downloadButtonSection.js"></script>
 </body>
 

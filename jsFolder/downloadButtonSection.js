@@ -250,7 +250,7 @@ document
 // send mail button section
 
 document.getElementById("sendMailBtn").addEventListener("click", async () => {
-  // let userres = confirm("Are you sure to send Mails ?");
+  // let userres "Are you sure to send Mails ?");
   let userres = await confrimAction("Confirmation","Are you sure to send Mails ?")
   if (!userres) {
     return;

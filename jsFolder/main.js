@@ -20,6 +20,9 @@ function stopLoader() {
   document.body.style.overflow = "auto";
 }
 
+
+
+
 var mytimingDetails;
 var fromTimeValue = document.getElementById("fromtime");
 var toTimeValue = document.getElementById("totime");

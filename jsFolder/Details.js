@@ -398,7 +398,7 @@ depdetailsBtn.addEventListener('click', function (e) {
         // Reset depdetailsBtnClicked after completing the operation
         depdetailsBtnClicked = false;
         stopLoader();
-        alert('Please select the available rooms...')
+        alert('You can select the available rooms now')
         
      
 });

@@ -20,6 +20,28 @@ function stopLoader() {
   document.body.style.overflow = "auto";
 }
 
+// sweet alert function
+function  confrimAction(mytitle,message){
+  return new Promise((resolve) => {
+    Swal.fire({
+      title: mytitle,
+      text: message,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, do it!',
+      cancelButtonText: 'Cancel',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        resolve(true); // Resolve with true if confirmed
+      } else {
+        resolve(false); // Resolve with false if canceled
+      }
+    });
+  });
+
+}
 
 
 
@@ -34,7 +56,7 @@ const jumbleRadioButton = document.getElementById("jumble");
 let radiovalue = "";
 
 // onclick on firstform button
-document.getElementById("firstformBtn").addEventListener("click", function () {
+document.getElementById("firstformBtn").addEventListener("click", async function () {
   // Check which radio button is selected
   if (continuosRadioButton.checked) {
     radiovalue = "continuous";
@@ -52,9 +74,12 @@ document.getElementById("firstformBtn").addEventListener("click", function () {
   if (!fromTimeValue.value || !toTimeValue.value || !dateValue.value) {
     alert("Please fill in all fields.");
   } else {
-    let con = confirm(
-      "Are you sure with the details cannot make changes anymore?"
-    );
+   
+    const con= await confrimAction("Confirmation","Are you sure with the details cannot make changes anymore");
+    // let con = confirm(
+    //   "Are you sure with the details cannot make changes anymore?"
+    // );
+    
 
     // Set the display property of the element with id 'alldetails' to 'flex'
     const allDetailsElement = document.getElementById("alldetails");

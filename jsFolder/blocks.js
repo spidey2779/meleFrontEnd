@@ -146,7 +146,7 @@ const confirmButton = document.getElementById('generateBlocks');
 // Attach a click event listener to the confirm button
 confirmButton.addEventListener('click', handleConfirmButtonClick);
 
-function handleConfirmButtonClick() {
+async function handleConfirmButtonClick() {
     // Check if at least one room is selected
     const totalSelectedRooms = Object.values(selectedValues).flat().length;
 
@@ -156,7 +156,8 @@ function handleConfirmButtonClick() {
         return;
     }
     // Display a confirmation message to the user
-    const userConfirmation = confirm('Are you sure you want to confirm you cannot make any changes ?');
+    // const userConfirmation = confirm('Are you sure you want to confirm you cannot make any changes ?');
+    const userConfirmation = await confrimAction("Confirmation","Are you sure you want to confirm you cannot make any changes ?")
 
     // Check if the user confirmed
     if (!userConfirmation) {

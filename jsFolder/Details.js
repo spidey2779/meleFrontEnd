@@ -289,11 +289,10 @@ function handleValueButtonClick(yearIndex, key, value) {
     updateDisplay();
 }
 
-// Function to confirm with the user before deleting
-// ... (existing code)
+
 
 // Function to confirm with the user before deleting
-function confirmDeletion() {
+ function confirmDeletion() {
     // Confirm with the user before performing any operation
     const selectedYearsCount = selectedYears.size;
 
@@ -311,7 +310,7 @@ function confirmDeletion() {
         depdetailsBtnClicked = false;
         return false;
     }
-
+    
     // Store the selected data before deletion
     selectedDataBeforeDeletion = { ...selectedData };
     mydatafunction(selectedDataBeforeDeletion);
@@ -332,11 +331,11 @@ function confirmDeletion() {
 let depdetailsBtnClicked = false;
 let depdetailsBtn = document.getElementById('generateDataButton');
 
-depdetailsBtn.addEventListener('click', function (e) {
+depdetailsBtn.addEventListener('click',  function (e) {
     if (depdetailsBtnClicked) {
         return;
     }
-
+   
     // Check if at least one subject is selected
     if (Object.keys(selectedData).length === 0) {
         // Display alert if no subject is selected
@@ -353,8 +352,7 @@ depdetailsBtn.addEventListener('click', function (e) {
         return;
     }
 
-    // Show loader when the button is clicked
-    startLoader("updating details...");
+ 
 
     // Iterate over the selected years and hide their sections
     selectedYears.forEach(yearIndex => {
@@ -397,8 +395,12 @@ depdetailsBtn.addEventListener('click', function (e) {
     depdetailsBtn.innerText = "⬇️Select the Rooms below"
         // Reset depdetailsBtnClicked after completing the operation
         depdetailsBtnClicked = false;
-        stopLoader();
-        alert('You can select the available rooms now')
+
+            Swal.fire({
+                // title: 'SweetAlert2 Icons',
+                text: 'You can able to select the rooms now',
+                icon: 'info' // or 'error', 'warning', 'info', 'question'
+            })
         
      
 });

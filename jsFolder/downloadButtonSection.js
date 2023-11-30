@@ -256,9 +256,24 @@ document.getElementById("sendMailBtn").addEventListener("click", () => {
   }
   startLoader('SendingMails...')
   let mailurl = "https://mele-be.onrender.com/mail/sending";
-  fetch(mailurl).then(response => response.json())
-  .then( data => {
+  fetch(mailurl) .then((response) => {
+    if (!response.ok) {
+      throw new Error('Error in sending mails' + response.status);
+    }
+    return response.json();
+  }).then(data =>{
+    
     stopLoader()
+    // Alert with a custom title and text
+    
+Swal.fire({
+  
+  text: 'Mails Sent Successfully',
+  icon: 'success', // You can use 'success', 'error', 'warning', 'info', etc.
+  confirmButtonText: 'OK'
+});
+
+ 
   })
   .catch((err) =>console.error('Error:',err))
 

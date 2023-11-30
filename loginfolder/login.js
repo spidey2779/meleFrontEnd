@@ -79,8 +79,8 @@ document.getElementById("lgnbtn").addEventListener("click", async function (e) {
   
          
             Swal.fire({
-                text: data.message,
-                icon:  data.success ? 'success' : 'error',
+                text: 'Logged in Successfully',
+                icon:  'success',
                 confirmButtonText: "OK",
                 customClass: {
                     title: "text-primary",

@@ -90,7 +90,7 @@ document.getElementById("lgnbtn").addEventListener("click", async function (e) {
             })
             setTimeout(() => {
                 window.location.href='../user.html'
-            }, 2500);
+            }, 0);
         } catch (err) {
             console.error("!!Error while logging in...");
             alert("!!Error while logging in...");

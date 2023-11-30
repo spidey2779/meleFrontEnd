@@ -291,7 +291,7 @@ nav .headers h1{
  
 /* form two */
 #secondform{
-    /* pointer-events: none; */
+    pointer-events: none;
     display: flex;
     flex-direction: column;
     align-items: start;

@@ -102,7 +102,14 @@ nav .headers h1{
     margin: 3px auto;
     padding: 2px;
 }
-
+/* afternavdiv */
+#afternavdiv{
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+}
 
 /* Reset styles to remove default browser styling */
 #firstDropdown {
@@ -134,8 +141,26 @@ nav .headers h1{
     outline: transparent;
     border-color: rgb(9, 198, 231);
 }
+/* reset button */
+#resetBtn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
 
-
+#resetBtn:hover {
+    background-color: darkred;
+}
 /* form styles */
 #firstform {
     display: flex;

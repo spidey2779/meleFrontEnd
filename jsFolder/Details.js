@@ -393,13 +393,14 @@ depdetailsBtn.addEventListener('click', function (e) {
         summaryTag.disabled = true;
     }
     document.getElementById('blockdetails').style.display="flex"
-    // Example asynchronous operation (replace this with your actual logic)
-    setTimeout(() => {
-      stopLoader();
+
     depdetailsBtn.innerText = "⬇️Select the Rooms below"
         // Reset depdetailsBtnClicked after completing the operation
         depdetailsBtnClicked = false;
-    }, 2000); 
+        stopLoader();
+        alert('Please select the available rooms...')
+        
+     
 });
 
 

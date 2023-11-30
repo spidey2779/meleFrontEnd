@@ -74,30 +74,23 @@ document.getElementById("lgnbtn").addEventListener("click", async function (e) {
             }
   
             const data = await response.json();
-            var title = data.message;
-            var iconText;
+        
+            
   
-            if (data.success) {
-                iconText = "success";
-            } else {
-                iconText = "error";
-            }
-            
-            stopLoader();
-            
+         
             Swal.fire({
-                text: title,
-                icon: iconText,
+                text: data.message,
+                icon:  data.success ? 'success' : 'error',
                 confirmButtonText: "OK",
                 customClass: {
                     title: "text-primary",
                     confirmButton: "btn btn-primary",
                 },
-                timer:3000
+                timer:2000
             })
             setTimeout(() => {
                 window.location.href='../user.html'
-            }, 3000);
+            }, 2500);
         } catch (err) {
             console.error("!!Error while logging in...");
             alert("!!Error while logging in...");

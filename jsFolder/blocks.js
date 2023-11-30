@@ -163,7 +163,8 @@ function handleConfirmButtonClick() {
         // If the user didn't confirm, return
         return;
     }
-
+    //starting the loader
+    startLoader("updating rooms...");
     // You can replace the above log with your actual pre-confirmation operation
 
     // Set pointer-events to 'none' for blockSection
@@ -195,12 +196,8 @@ function handleConfirmButtonClick() {
     // startLoader('sending selected rooms...')
     // Example asynchronous operation (replace this with your actual logic)
     confirmButton.disabled=true;
-    setTimeout(() => {
-        // After completing the operation, stop the loader
-
-      
-        // stopLoader();
-    }, 2000); // Adjust the time according to your actual logic or remove the timeout if not needed
+   stopLoader()
+   alert('you can download the sheets now...')
 }
 
 

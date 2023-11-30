@@ -250,31 +250,34 @@ document
 // send mail button section
 
 document.getElementById("sendMailBtn").addEventListener("click", () => {
-  let userres=confirm('Are you sure to send Mails ?')
-  if(!userres){
+  let userres = confirm("Are you sure to send Mails ?");
+  if (!userres) {
     return;
   }
-  startLoader('SendingMails...')
+  startLoader("SendingMails...");
   let mailurl = "https://mele-be.onrender.com/mail/sending";
-  fetch(mailurl) .then((response) => {
-    if (!response.ok) {
-      throw new Error('Error in sending mails' + response.status);
-    }
-    return response.json();
-  }).then(data =>{
-    
-    stopLoader()
-    // Alert with a custom title and text
-    
-Swal.fire({
-  
-  text: 'Mails Sent Successfully',
-  icon: 'success', // You can use 'success', 'error', 'warning', 'info', etc.
-  confirmButtonText: 'OK'
-});
+  fetch(mailurl)
+    .then((response) => {
+      if (!response.ok) {
+        alert("error in Sending Mails");
+        throw new Error("Error in sending mails" + response.status);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      stopLoader();
+      // Alert with a custom title and text
 
- 
-  })
-  .catch((err) =>console.error('Error:',err))
-
+      Swal.fire({
+        text: "Mails Sent Successfully",
+        icon:  'success',
+                confirmButtonText: "OK",
+                customClass: {
+                    title: "text-primary",
+                    confirmButton: "btn btn-primary",
+                },
+                timer:2000
+      });
+    })
+    .catch((err) => console.error("Error:", err));
 });

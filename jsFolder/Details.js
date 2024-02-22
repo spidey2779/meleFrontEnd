@@ -1,6 +1,5 @@
 
 
-
 // this is the output array
 let myFinalOutput=[]
 

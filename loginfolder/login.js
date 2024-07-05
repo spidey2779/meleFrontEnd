@@ -58,7 +58,7 @@ document.getElementById("lgnbtn").addEventListener("click", async function (e) {
       password: password,
     };
 
-    const url = "https://mele-be-eoda.onrender.com";
+    const url = "https://mele-be-eoda.onrender.com/auth/login";
 
     try {
       const response = await fetch(url, {

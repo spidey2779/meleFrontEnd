@@ -14,7 +14,7 @@
 let  blocks = {};
 let  selectedRooms={}
 
-fetch('https://mele-be.onrender.com/rooms/empty')
+fetch('https://mele-be-eoda.onrender.com/rooms/empty')
   .then((res) => {
    
     if (!res.ok) {
@@ -227,7 +227,7 @@ function hello() {
   console.log(myFinalOutput);
 
   // Assuming myFinalOutput is ready to be sent
-  const url = 'https://mele-be.onrender.com/roll/allocRoom';
+  const url = 'https://mele-be-eoda.onrender.com/roll/allocRoom';
 
   fetch(url, {
     method: 'POST', // or 'PUT' or 'PATCH' depending on your API

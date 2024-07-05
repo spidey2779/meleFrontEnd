@@ -256,7 +256,7 @@ document.getElementById("sendMailBtn").addEventListener("click", async () => {
     return;
   }
   startLoader("SendingMails...");
-  let mailurl = "https://mele-be.onrender.com/mail/sending";
+  let mailurl = "https://mele-be-eoda.onrender.com/mail/sending";
   fetch(mailurl)
     .then((response) => {
       if (!response.ok) {

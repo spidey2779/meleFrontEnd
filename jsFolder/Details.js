@@ -30,7 +30,7 @@ let myFinalOutput=[]
 let Years = [];
 let selectedDataBeforeDeletion = null;
 
-fetch('https://mele-be.onrender.com/year/code')
+fetch('https://mele-be-eoda.onrender.com/year/code')
   .then((response) => {
     startLoader('Fetching Data ...')
     if (!response.ok) {
